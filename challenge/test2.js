@@ -8,7 +8,11 @@
 const data = [1, 4, 2, 3, 5, 3, 2, 4];
 
 function result(data) {
-  // Your Code Here
+  return data.filter(function (number, index, self) {
+    return self.indexOf(number) === index;
+  }).sort(function (a, b) {
+    return a - b;
+  });
 }
 
 console.log(result(data));

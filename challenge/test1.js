@@ -63,7 +63,51 @@ const sessions = [
 ];
 
 function result(sessions) {
-  // Your Code Here
+  const results = [];
+
+  sessions = sessions.reduce(function (ref, item) {
+    if (!ref[item['session_id']]) {
+      ref[item['session_id']] = [];
+    }
+    ref[item['session_id']].push(item);
+    return ref;
+  }, {});
+
+  for (let key in sessions) {
+    key = parseInt(key);
+    const classes = sessions[key].reduce(function (ref, item) {
+      if (!ref[item['class']['class_id']]) {
+        ref[item['class']['class_id']] = [];
+      }
+
+      ref[item['class']['class_id']].push(item.class);
+      return ref;
+    }, {});
+
+    const record = {
+      session_id: sessions[key][0].session_id,
+      time: sessions[key][0].time,
+      classes: [],
+    };
+
+    for (const id in classes) {
+      const className = {
+        class_id: id,
+        name: classes[id][0].name,
+        students: sessions[key].filter(function (session) {
+          return session.class.class_id === parseInt(id);
+        }).map(function (session) {
+          return session.student;
+        })
+      };
+
+      record.classes.push(className);
+    }
+
+    results.push(record);
+  }
+
+  return JSON.stringify(results, null, 2);
 }
 
 console.log(result(sessions));
