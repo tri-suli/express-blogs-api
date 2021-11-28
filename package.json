@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js"
+    "start": "nodemon --exec npm run babel-node -- ./src/server.js",
+    "babel-node": "babel-node --presets='@babel/preset-env'"
   },
   "keywords": [
     "blog",
@@ -16,10 +17,17 @@
   "author": "Tri Suli Prasetyo",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.7.2",
     "mongoose": "^6.0.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "nodemon": "^2.0.15"
   }
 }
