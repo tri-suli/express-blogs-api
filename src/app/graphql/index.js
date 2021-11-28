@@ -1,22 +1,4 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
-
-const mongodb = require('./collection/mongodb');
-const article = mongoose.model('Article', require('./collection/schema/article'));
-const comment = mongoose.model('Comment', require('./collection/schema/comment'));
-
-const app = express();
-const port = process.env.SERVER_PORT;
-
-mongodb.connect(
-  process.env.DB_HOST,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
-  process.env.DB_NAME
-);
 
 const schema = buildSchema(`
   type Query {
@@ -130,12 +112,8 @@ const resolver = {
   },
 };
 
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: resolver,
-  graphiql: true,
-}));
-
-app.listen(port, () => {
-  console.log(`Running a GraphQL API server at http://localhost:${port}/graphql`);
-});
+// app.use('/graphql', graphqlHTTP({
+//   schema: schema,
+//   rootValue: resolver,
+//   graphiql: true,
+// }));
