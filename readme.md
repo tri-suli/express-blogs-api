@@ -1,11 +1,19 @@
 # Blog API
 
-Description comming soon...
+Simple API for creating blogs, adding comments to blogs. All endpoints in this API are created using [graphql](https://graphql.org/)
+
+# Documentation
+
+- [GraphQL](https://graphql.org/learn)
+- [ExpressJS](https://expressjs.com/)
+- [MongoDB](https://docs.mongodb.com/)
+- [MongooseJS](https://mongoosejs.com/docs/guide.html)
 
 ## Installation
 
 - Clone this project
-- Copy `.env.example` and rename it as `.env`
+- Copy `.env.example` as `.env`
+- Setup `env` values
 - run `npm install`
 - start dev server by run `npm run start` -> visit **http://localhost:{port}/graphql**
 
@@ -59,12 +67,7 @@ mutation {
 
 ```
 mutation {
-  updateArticle (
-  	id: "61a36d6a9995b9fbc084323b",
-    creator: "61a369a188032f92e3986e18",
-    title: "First article update",
-    body: "new body"
-	): ArticleType {
+  updateArticle (id: String, creator: String, title: String, body: String): ArticleType {
     _id,
     title,
     body,

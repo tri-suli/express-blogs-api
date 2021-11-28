@@ -21,7 +21,7 @@ const UserType = new GraphQLObjectType({
             creator: parent._id,
           });
         } catch (error) {
-          console.log(error);
+          console.lerror(error);
         }
 
         return article;
@@ -36,9 +36,8 @@ const UserType = new GraphQLObjectType({
           comments = await Comment.find({
             creator: parent._id,
           });
-          console.log(comments)
         } catch (error) {
-          console.log(error);
+          console.lerror(error);
         }
 
         return comments;

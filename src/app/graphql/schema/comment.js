@@ -18,7 +18,7 @@ const CommentType = new GraphQLObjectType({
         try {
           user = await User.findById(creator);
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
 
         return user;
@@ -32,7 +32,7 @@ const CommentType = new GraphQLObjectType({
         try {
           article = await Article.findById(parent.article);
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
 
         return article;

@@ -80,7 +80,7 @@ const Mutation = new GraphQLObjectType({
 
           response = await Comment.findById(id);
         } catch (error) {
-          console.log(error)
+          console.error(error)
         }
 
         return response;
@@ -108,7 +108,7 @@ const Mutation = new GraphQLObjectType({
 
           response = true;
         } catch (error) {
-          console.log(error)
+          console.error(error)
         }
 
         return response;
@@ -140,7 +140,7 @@ const Mutation = new GraphQLObjectType({
 
           response = await article.save();
         } catch (error) {
-          console.log(error)
+          console.error(error)
         }
 
         return response;
@@ -170,7 +170,7 @@ const Mutation = new GraphQLObjectType({
 
           response = await Article.findById(id);
         } catch (error) {
-          console.log(error)
+          console.error(error)
         }
 
         return response;
@@ -198,7 +198,7 @@ const Mutation = new GraphQLObjectType({
 
           response = true;
         } catch (error) {
-          console.log(error)
+          console.error(error)
         }
 
         return response;
